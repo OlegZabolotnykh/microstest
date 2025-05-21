@@ -1,20 +1,24 @@
 package ru.webrise.microstest.service;
 
-import jakarta.annotation.PostConstruct;
-import ru.webrise.microstest.entity.User;
+import ru.webrise.microstest.dto.UserDto;
+import ru.webrise.microstest.entity.Subscription;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
 
-    User getUserById(Long id);
+    UserDto getUserById(Long id);
 
-    User addUser(User user);
+    UserDto addUser(UserDto userDto);
 
-    User updateUser(Long id, User user);
+    UserDto updateUser(Long id, UserDto userDto);
 
     void deleteUser(Long id);
 
+    void deleteSubscription(Long userId, Long subscriptionId);
+
+    Set<Subscription> getUserSubscriptions(Long id);
 }

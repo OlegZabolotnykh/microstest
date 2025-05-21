@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 
 @Data
 @NoArgsConstructor
@@ -26,4 +24,12 @@ public class Subscription {
     private String webServiceUrl;
 
     private String webServiceUserId;
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof Subscription)) return false;
+        return this.getId().equals(((Subscription) other).getId());
+    }
 }

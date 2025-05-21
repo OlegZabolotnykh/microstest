@@ -1,7 +1,7 @@
 package ru.webrise.microstest.controller.rest;
 
 import org.springframework.web.bind.annotation.*;
-import ru.webrise.microstest.entity.Subscription;
+import ru.webrise.microstest.dto.SubscriptionDto;
 import ru.webrise.microstest.service.SubscriptionService;
 
 import java.util.List;
@@ -17,23 +17,22 @@ public class SubscriptionRestController {
     }
 
     @GetMapping
-    public List<Subscription> getAllSubscriptions() {
+    public List<SubscriptionDto> getAllSubscriptions() {
         return subscriptionService.getAllSubscriptions();
     }
 
     @GetMapping("{id}")
-    public Subscription getSubscription(@PathVariable Long id) {
+    public SubscriptionDto getSubscription(@PathVariable Long id) {
         return subscriptionService.getSubscriptionById(id);
     }
 
     @PostMapping
-    public Subscription addNewSubscription(@RequestBody Subscription subscription) {
-        return subscriptionService.addNewSubscription(subscription);
+    public SubscriptionDto addNewSubscription(@RequestBody SubscriptionDto subscriptionDto) {
+        return subscriptionService.addNewSubscription(subscriptionDto);
     }
 
     @DeleteMapping("{id}")
     public void deleteSubscription(@PathVariable Long id) {
         subscriptionService.deleteSubscription(id);
     }
-
 }
