@@ -48,4 +48,11 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public void deleteSubscription(Long id) {
         subscriptionRepository.deleteById(id);
     }
+
+    @Override
+    public List<SubscriptionDto> getTop3Popular() {
+        return subscriptionRepository.findTop3Popular().stream()
+                .map(subscriptionMapper::toDto)
+                .toList();
+    }
 }

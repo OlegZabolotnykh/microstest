@@ -35,4 +35,9 @@ public class SubscriptionRestController {
     public void deleteSubscription(@PathVariable Long id) {
         subscriptionService.deleteSubscription(id);
     }
+
+    @GetMapping("top")
+    public List<SubscriptionDto> getTop3Popular() {
+        return subscriptionService.getTop3Popular();
+    }
 }
