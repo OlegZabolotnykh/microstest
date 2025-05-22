@@ -10,9 +10,9 @@
     </parent>
     <groupId>ru.webrise</groupId>
     <artifactId>microstest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1-Release</version>
     <name>microstest</name>
-    <description>microstest</description>
+    <description>Testing task for webrise.ru</description>
     <url/>
     <licenses>
         <license/>

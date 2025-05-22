@@ -25,11 +25,4 @@ public class Subscription {
 
     private String webServiceUserId;
 
-    @Override
-    public boolean equals(Object other) {
-        if (other == null) return false;
-        if (this == other) return true;
-        if (!(other instanceof Subscription)) return false;
-        return this.getId().equals(((Subscription) other).getId());
-    }
 }
