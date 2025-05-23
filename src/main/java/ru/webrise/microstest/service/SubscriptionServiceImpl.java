@@ -1,6 +1,7 @@
 package ru.webrise.microstest.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 import ru.webrise.microstest.dto.SubscriptionDto;
 import ru.webrise.microstest.entity.Subscription;
@@ -45,7 +46,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
+    @Transactional
     public void deleteSubscription(Long id) {
+        subscriptionRepository.deleteFromSubscribersBySubscriptionId(id);
         subscriptionRepository.deleteById(id);
     }
 
@@ -54,5 +57,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return subscriptionRepository.findTop3Popular().stream()
                 .map(subscriptionMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public void deleteFromSubscribersBySubscriptionId(Long id) {
+        subscriptionRepository.deleteFromSubscribersBySubscriptionId(id);
     }
 }

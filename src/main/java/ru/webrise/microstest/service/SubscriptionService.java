@@ -17,4 +17,6 @@ public interface SubscriptionService {
     void deleteSubscription(Long id);
 
     List<SubscriptionDto> getTop3Popular();
+
+    void deleteFromSubscribersBySubscriptionId(Long id);
 }

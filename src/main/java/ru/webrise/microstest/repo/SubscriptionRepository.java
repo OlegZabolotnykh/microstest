@@ -1,7 +1,9 @@
 package ru.webrise.microstest.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.webrise.microstest.entity.Subscription;
 
@@ -21,4 +23,9 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
             """,
             nativeQuery = true)
     List<Subscription> findTop3Popular();
+
+
+    @Query(value = "DELETE from users_subscriptions WHERE fk_subscription = :id", nativeQuery = true)
+    @Modifying
+    void deleteFromSubscribersBySubscriptionId(@Param("id")Long id);
 }
