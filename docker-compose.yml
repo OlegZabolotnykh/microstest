@@ -1,0 +1,31 @@
+name: microstest
+
+services:
+  app:
+    build: ./
+    ports:
+      - '8080:8080'
+    container_name: microstest
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=passw0rd
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/microstest
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_DB=microstest
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
