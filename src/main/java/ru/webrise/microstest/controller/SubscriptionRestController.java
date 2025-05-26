@@ -1,5 +1,6 @@
 package ru.webrise.microstest.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.webrise.microstest.dto.SubscriptionDto;
@@ -9,14 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/subscriptions")
+@AllArgsConstructor
 @Slf4j
 public class SubscriptionRestController {
 
     private final SubscriptionService subscriptionService;
-
-    public SubscriptionRestController(SubscriptionService subscriptionService) {
-        this.subscriptionService = subscriptionService;
-    }
 
     @GetMapping
     public List<SubscriptionDto> getAllSubscriptions() {

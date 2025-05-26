@@ -2,6 +2,7 @@ package ru.webrise.microstest.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.webrise.microstest.dto.UserDto;
 import ru.webrise.microstest.entity.Subscription;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -21,12 +23,6 @@ public class UserServiceImpl implements UserService {
     private final SubscriptionRepository subscriptionRepository;
 
     private final UserMapper userMapper;
-
-    public UserServiceImpl(UserRepository userRepository, SubscriptionRepository subscriptionRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.subscriptionRepository = subscriptionRepository;
-        this.userMapper = userMapper;
-    }
 
     @Override
     public UserDto getUserById(Long id) {

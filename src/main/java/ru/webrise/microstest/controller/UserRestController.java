@@ -1,6 +1,7 @@
 package ru.webrise.microstest.controller;
 
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.webrise.microstest.dto.UserDto;
@@ -12,13 +13,10 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/users")
+@AllArgsConstructor
 @Slf4j
 public class UserRestController {
     private final UserServiceImpl userService;
-
-    public UserRestController(UserServiceImpl userService) {
-        this.userService = userService;
-    }
 
     @GetMapping
     public List<UserDto> getAllUsers() {

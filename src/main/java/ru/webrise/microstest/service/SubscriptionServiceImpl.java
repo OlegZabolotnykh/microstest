@@ -2,7 +2,8 @@ package ru.webrise.microstest.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Component;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.webrise.microstest.dto.SubscriptionDto;
 import ru.webrise.microstest.entity.Subscription;
 import ru.webrise.microstest.repo.SubscriptionRepository;
@@ -10,16 +11,12 @@ import ru.webrise.microstest.util.SubscriptionMapper;
 
 import java.util.List;
 
-@Component
+@Service
+@AllArgsConstructor
 public class SubscriptionServiceImpl implements SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
 
     private final SubscriptionMapper subscriptionMapper;
-
-    public SubscriptionServiceImpl(SubscriptionRepository subscriptionRepository, SubscriptionMapper subscriptionMapper) {
-        this.subscriptionRepository = subscriptionRepository;
-        this.subscriptionMapper = subscriptionMapper;
-    }
 
     @Override
     public List<SubscriptionDto> getAllSubscriptions() {
